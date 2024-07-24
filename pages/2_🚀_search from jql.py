@@ -89,12 +89,13 @@ with cols[1]:
         description="",
         key="card2",
     )
-if len(st.session_state.issue_from_jql) == 0:
-    st.warning("No se encontro issues", icon="⚠️")
+
 
 # Mostrar los resultados de la búsqueda
 if st.session_state.issue_from_jql:
     # st.write(st.session_state.issue_from_jql)
+    if len(st.session_state.issue_from_jql) == 0:
+        st.warning("No se encontro issues", icon="⚠️")
     df = pd.DataFrame(
         st.session_state.issue_from_jql,
         columns=["key", "Resumen", "Persona asignada", "Estado"],
