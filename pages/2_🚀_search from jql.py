@@ -4,6 +4,11 @@ import pandas as pd
 from requests.auth import HTTPBasicAuth
 import streamlit_shadcn_ui as ui
 from os import environ
+from dotenv import load_dotenv
+import os
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
 st.title("Projects")
 
@@ -30,8 +35,8 @@ def search_issue_from_jql(jql):
             params=params,
             headers={"Accept": "application/json"},
             auth=HTTPBasicAuth(
-                environ.get("JIRA_USER"),
-                environ.get("JIRA_TOKEN"),
+                os.getenv("JIRA_USER"),
+                os.getenv("JIRA_TOKEN"),
             ),
         )
         if response.status_code != 200:

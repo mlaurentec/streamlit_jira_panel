@@ -2,3 +2,4 @@ streamlit
 requests
 plotly
 streamlit_shadcn_ui
+python-dotenv

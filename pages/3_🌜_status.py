@@ -3,6 +3,11 @@ import requests
 import pandas as pd
 from requests.models import HTTPBasicAuth
 from os import environ
+from dotenv import load_dotenv
+import os
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
 st.title("Estados para un proyecto")
 
@@ -16,8 +21,9 @@ def call_api(project):
         url=url,
         headers={"Accept": "application/json"},
         auth=HTTPBasicAuth(
-            environ.get("JIRA_USER"),
-            environ.get("JIRA_TOKEN"),
+            os.getenv("JIRA_USER"),
+            os.getenv("JIRA_TOKEN"),
+
         ),
     )
     print(url)
